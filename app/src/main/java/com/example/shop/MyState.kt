@@ -1,8 +1,7 @@
 package com.example.shop
 
-import kotlinx.coroutines.flow.Flow
-
 data class WelcomeState(
-    val welcomeCount: Int? = null,
+    val isCompleted: Boolean = false,
+    val isLoading: Boolean = false,
     val error: String? = null
 )

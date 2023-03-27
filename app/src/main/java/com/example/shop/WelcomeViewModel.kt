@@ -1,5 +1,6 @@
 package com.example.shop
 
+import android.content.Context
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -8,7 +9,6 @@ import androidx.lifecycle.viewModelScope
 import com.example.shop.domain.repository.DataStoreRepository
 import com.example.shop.domain.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -20,26 +20,38 @@ class WelcomeViewModel @Inject constructor(
     var state by mutableStateOf(WelcomeState())
         private set
 
-    suspend fun loadWelcomeCount() {
+    fun getWelcomeCompletedFlow() {
         viewModelScope.launch {
             state = state.copy(
+                isLoading = true,
                 error = null
             )
-        }
-        when (val result = dataStoreRepository.getWelcomeCount()) {
-            is Resource.Success -> {
-                result.data?.collect{
-                    state = state.copy(
-                        welcomeCount = it,
-                        error = null
+            when (val result = dataStoreRepository.getWelcomeCompletedFlow()) {
+                is Resource.Success -> {
+                    result.data?.collect {
+                        state = state.copy(
+                            isLoading = false,
+                            isCompleted = it,
+                            error = null
+                        )
+                    }
+                }
+                is Resource.Error -> {
+                    state.copy(
+                        isLoading = false,
+                        error = result.message
                     )
                 }
             }
-            is Resource.Error -> {
-                state.copy(
-                    error = result.message
-                )
-            }
+        }
+    }
+
+    fun setWelcomeCompletedFlow(context: Context) {
+        viewModelScope.launch {
+            dataStoreRepository.setWelcomeCompletedFlow(
+                isCompleted = true,
+                context = context
+            )
         }
     }
 }

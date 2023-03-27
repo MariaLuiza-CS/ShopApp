@@ -1,8 +1,6 @@
 package com.example.shop.presentation.ui
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
+import android.content.Context
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.core.animateDpAsState
@@ -16,21 +14,20 @@ import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
-import com.example.shop.*
+import com.example.shop.OnBoardingPage
+import com.example.shop.WelcomeViewModel
 import com.example.shop.domain.utils.Screen
 import com.example.shop.presentation.ui.theme.IndianRed
-import com.example.shop.presentation.ui.theme.ShopTheme
 import com.example.shop.presentation.ui.theme.Vanilla
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
@@ -43,6 +40,10 @@ import com.google.accompanist.pager.rememberPagerState
 fun WelcomeScreen(
     navController: NavHostController
 ) {
+
+    val viewModel: WelcomeViewModel = hiltViewModel()
+    val context: Context = LocalContext.current
+
     val pages = listOf(
         OnBoardingPage.Fist,
         OnBoardingPage.Second,
@@ -75,7 +76,7 @@ fun WelcomeScreen(
         ) {
             PagerIndicator(3, pagesState.currentPage)
         }
-        
+
         Spacer(modifier = Modifier.height(60.dp))
 
         FinishButton(
@@ -84,6 +85,7 @@ fun WelcomeScreen(
         ) {
             navController.popBackStack()
             navController.navigate(Screen.Login.route)
+            viewModel.setWelcomeCompletedFlow(context)
         }
     }
 }
@@ -179,21 +181,6 @@ fun FinishButton(
                     text = "Finish",
                     style = MaterialTheme.typography.h2
                 )
-            }
-        }
-    }
-}
-
-@ExperimentalAnimationApi
-@ExperimentalPagerApi
-class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        installSplashScreen()
-        setContent {
-            ShopTheme {
-                val navController = rememberNavController()
-                SetUpNavGraph(navController = navController)
             }
         }
     }
