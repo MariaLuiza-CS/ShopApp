@@ -20,6 +20,8 @@ import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import com.example.shop.presentation.ui.theme.Flax
+import com.example.shop.presentation.ui.theme.FlaxShadow
 import com.example.shop.presentation.ui.theme.IndianRed
 import com.example.shop.presentation.ui.theme.LightVanilla
 
@@ -86,7 +88,7 @@ fun CustomCircularProgressBar() {
 
             drawCircle(
                 brush = Brush.radialGradient(
-                    colors = listOf(Color.LightGray, Color.White),
+                    colors = listOf(FlaxShadow, FlaxShadow),
                     center = Offset(x = this.size.width / 2, y = this.size.height / 2),
                     radius = this.size.height / 2
                 ),
@@ -103,7 +105,7 @@ fun CustomCircularProgressBar() {
             val sweepAngle = (animatedProgress).value * 360 / 100
 
             drawArc(
-                color = Color(0xFF35898f),
+                color =Flax,
                 startAngle = -90f,
                 sweepAngle = sweepAngle,
                 useCenter = false,
