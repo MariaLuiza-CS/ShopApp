@@ -1,6 +1,7 @@
-package com.example.shop
+package com.example.shop.domain.utils
 
 import androidx.annotation.DrawableRes
+import com.example.shop.R
 
 sealed class OnBoardingPage(
     @DrawableRes

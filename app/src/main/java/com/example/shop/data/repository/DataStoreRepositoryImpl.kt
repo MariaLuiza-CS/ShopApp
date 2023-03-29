@@ -1,4 +1,4 @@
-package com.example.shop
+package com.example.shop.data.repository
 
 import android.content.Context
 import androidx.datastore.core.DataStore

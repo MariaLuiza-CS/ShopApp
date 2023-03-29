@@ -23,7 +23,7 @@ fun SetUpNavGraph(
         composable(route = Screen.Welcome.route) {
             WelcomeScreen(navController = navController)
         }
-        composable(route = Screen.Login.route) {
+        composable(route = Screen.Home.route) {
             LoginScreen(navController = navController)
         }
     }

@@ -1,4 +1,4 @@
-package com.example.shop
+package com.example.shop.presentation.ui.viewmodel
 
 import android.content.Context
 import androidx.compose.runtime.getValue
@@ -6,6 +6,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.shop.data.state.WelcomeFlowState
 import com.example.shop.domain.repository.DataStoreRepository
 import com.example.shop.domain.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -17,7 +18,7 @@ class WelcomeViewModel @Inject constructor(
     private val dataStoreRepository: DataStoreRepository
 ) : ViewModel() {
 
-    var state by mutableStateOf(WelcomeState())
+    var state by mutableStateOf(WelcomeFlowState())
         private set
 
     fun getWelcomeCompletedFlow() {

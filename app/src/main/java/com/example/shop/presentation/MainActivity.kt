@@ -8,7 +8,7 @@ import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.compose.rememberNavController
 import com.example.shop.SetUpNavGraph
-import com.example.shop.WelcomeViewModel
+import com.example.shop.presentation.ui.viewmodel.WelcomeViewModel
 import com.example.shop.domain.utils.Screen
 import com.example.shop.presentation.ui.theme.ShopTheme
 import com.google.accompanist.pager.ExperimentalPagerApi
@@ -33,7 +33,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             ShopTheme {
                 var screen = if (viewModel.state.isCompleted) {
-                    Screen.Login.route
+                    Screen.Home.route
                 } else {
                     Screen.Welcome.route
                 }
