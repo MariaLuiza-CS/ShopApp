@@ -6,9 +6,9 @@ import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Card
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -60,9 +60,11 @@ fun LoginScreen(
                     style = MaterialTheme.typography.h1,
                     color = Color.White
                 )
-                Spacer(modifier = Modifier.height(24.dp))
+                Spacer(modifier = Modifier.height(40.dp))
                 Row(
-                    modifier = Modifier.padding(start = 0.dp).fillMaxWidth(),
+                    modifier = Modifier
+                        .padding(start = 0.dp)
+                        .fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceEvenly
                 ) {
                     CustomCircularProgressBar(140.dp)
@@ -80,11 +82,36 @@ fun LoginScreen(
                             color = Color.White,
                             textAlign = TextAlign.Center
                         )
+                        Spacer(modifier = Modifier.height(50.dp))
+                        Row(
+                            modifier = Modifier.padding(start = 50.dp),
+                            horizontalArrangement = Arrangement.End
+                        ) {
+                            val onClick = { /* Do something */ }
+                            FloatingActionButton(
+                                onClick = onClick,
+                                backgroundColor = Flax,
+                                contentColor = IndianRed
+                            ) {
+                                Icon(
+                                    Icons.Filled.Add,
+                                    "",
+                                    modifier = Modifier.size(40.dp)
+                                )
+                            }
+                        }
                     }
                 }
                 Spacer(modifier = Modifier.height(24.dp))
             }
         }
+        Spacer(modifier = Modifier.height(40.dp))
+        Text(
+            text = "Historic",
+            style = MaterialTheme.typography.body2,
+            color = Color.Black,
+            textAlign = TextAlign.Center
+        )
     }
 
 }
