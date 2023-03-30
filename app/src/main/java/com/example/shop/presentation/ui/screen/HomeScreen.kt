@@ -18,6 +18,8 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.shop.presentation.ui.theme.Flax
@@ -42,28 +44,45 @@ fun LoginScreen(
         modifier = Modifier
             .fillMaxSize()
             .background(LightVanilla)
+            .padding(24.dp)
     ) {
         Card(
+            modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(15.dp),
             backgroundColor = IndianRed,
             border = null,
             elevation = 1.dp,
         ) {
             Column() {
-//                LaunchedEffect(Unit) {
-//                    progress = 0.6f
-//                }
                 Text(
-                    text = "This Month",
-                    modifier = Modifier.padding(start = 16.dp)
+                    text = "This month",
+                    modifier = Modifier.padding(start = 16.dp, top = 16.dp),
+                    style = MaterialTheme.typography.h1,
+                    color = Color.White
                 )
-                CustomCircularProgressBar()
-//                CircularProgressIndicator(
-//                    progress = animatedProgress,
-//                    color = LightVanilla,
-//                    strokeWidth = 6.dp,
-//                    modifier = Modifier.then(Modifier.size(60.dp))
-//                )
+                Spacer(modifier = Modifier.height(24.dp))
+                Row(
+                    modifier = Modifier.padding(start = 0.dp).fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceEvenly
+                ) {
+                    CustomCircularProgressBar(140.dp)
+                    Column() {
+                        Text(
+                            text = "Total",
+                            style = MaterialTheme.typography.h1,
+                            color = Color.White,
+                            textAlign = TextAlign.Center
+                        )
+                        Spacer(modifier = Modifier.height(16.dp))
+                        Text(
+                            text = "\$184,30",
+                            style = MaterialTheme.typography.h1,
+                            color = Color.White,
+                            textAlign = TextAlign.Center
+                        )
+                    }
+                }
+                Spacer(modifier = Modifier.height(24.dp))
             }
         }
     }
@@ -71,20 +90,20 @@ fun LoginScreen(
 }
 
 @Composable
-fun CustomCircularProgressBar() {
+fun CustomCircularProgressBar(size: Dp) {
     Box(
-        modifier = Modifier.size(100.dp),
+        modifier = Modifier.size(size),
         contentAlignment = Alignment.Center
     ) {
 
         val animatedProgress = animateFloatAsState(
-            targetValue = 60f,
+            targetValue = 75f,
             animationSpec = tween(
                 durationMillis = 1000
             )
         )
 
-        Canvas(modifier = Modifier.size(300.dp)) {
+        Canvas(modifier = Modifier.size(size)) {
 
             drawCircle(
                 brush = Brush.radialGradient(
@@ -92,31 +111,31 @@ fun CustomCircularProgressBar() {
                     center = Offset(x = this.size.width / 2, y = this.size.height / 2),
                     radius = this.size.height / 2
                 ),
-                radius = 236.0f / 2,
+                radius = this.size.height / 2,
                 center = Offset(x = this.size.width / 2, y = this.size.height / 2)
             )
 
             drawCircle(
                 color = IndianRed,
-                radius = (115.dp / 2 - 24.dp).toPx(),
+                radius = (size / 2 - 15.dp).toPx(),
                 center = Offset(x = this.size.width / 2, y = this.size.height / 2)
             )
 
-            val sweepAngle = (animatedProgress).value * 360 / 100
+            val sweepAngle = (animatedProgress).value * 350 / 100
 
             drawArc(
-                color =Flax,
+                color = Flax,
                 startAngle = -90f,
                 sweepAngle = sweepAngle,
                 useCenter = false,
-                style = Stroke(width = 10.dp.toPx(), cap = StrokeCap.Round),
+                style = Stroke(width = 15.dp.toPx(), cap = StrokeCap.Round),
                 size = Size(
-                    width = (100.dp - 24.dp).toPx(),
-                    height = (100.dp - 24.dp).toPx()
+                    width = (size - 15.dp).toPx(),
+                    height = (size - 15.dp).toPx()
                 ),
                 topLeft = Offset(
-                    x = (24.dp / 2).toPx(),
-                    y = (24.dp / 2).toPx()
+                    x = (15.dp / 2).toPx(),
+                    y = (15.dp / 2).toPx()
                 )
             )
         }
@@ -125,8 +144,9 @@ fun CustomCircularProgressBar() {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                text = (animatedProgress.value).toInt().toString(),
-                style = MaterialTheme.typography.h2
+                text = (animatedProgress.value).toInt().toString() + "%",
+                style = MaterialTheme.typography.h1,
+                color = Color.White
             )
         }
     }

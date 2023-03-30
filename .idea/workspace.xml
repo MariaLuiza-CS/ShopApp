@@ -22,17 +22,8 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/shop/DataStoreRepositoryImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/shop/data/repository/DataStoreRepositoryImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/shop/LoginScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/shop/presentation/ui/screen/HomeScreen.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/shop/MyState.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/shop/data/state/WelcomeFlowState.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/shop/OnBoardingPage.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/shop/domain/utils/OnBoardingPage.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/shop/SetUpNavGraph.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/shop/presentation/navigation/SetUpNavGraph.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/shop/WelcomeViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/shop/presentation/ui/viewmodel/WelcomeViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/shop/di/RepositoryModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/shop/di/RepositoryModule.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/shop/domain/utils/Screen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/shop/domain/utils/Screen.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/shop/presentation/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/shop/presentation/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/shop/presentation/ui/WelcomeScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/shop/presentation/ui/screen/WelcomeScreen.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/shop/presentation/ui/theme/Color.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/shop/presentation/ui/theme/Color.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/shop/presentation/ui/screen/HomeScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/shop/presentation/ui/screen/HomeScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/shop/presentation/ui/theme/Type.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/shop/presentation/ui/theme/Type.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -312,11 +303,6 @@
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/shop/presentation/MainActivity.kt</url>
           <line>37</line>
           <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/shop/presentation/ui/screen/HomeScreen.kt</url>
-          <line>92</line>
-          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
