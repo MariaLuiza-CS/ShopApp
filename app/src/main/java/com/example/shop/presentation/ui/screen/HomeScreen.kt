@@ -22,15 +22,18 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
+import com.example.shop.presentation.navigation.HomeNavigationGraph
 import com.example.shop.presentation.ui.theme.Flax
 import com.example.shop.presentation.ui.theme.FlaxShadow
 import com.example.shop.presentation.ui.theme.IndianRed
 import com.example.shop.presentation.ui.theme.LightVanilla
 
 @Composable
-fun LoginScreen(
-    navController: NavHostController
+fun HomeScreen(
+    navController: NavHostController = rememberNavController()
 ) {
+
     var progress by remember { mutableStateOf(0.0f) }
 
     val animatedProgress = animateFloatAsState(
@@ -39,81 +42,84 @@ fun LoginScreen(
             durationMillis = 1000
         )
     )
-
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(LightVanilla)
-            .padding(24.dp)
+    Scaffold(
+        bottomBar = { com.example.shop.presentation.ui.screen.BottomNavigation(navController = navController) }
     ) {
-        Card(
-            modifier = Modifier.fillMaxWidth(),
-            shape = RoundedCornerShape(15.dp),
-            backgroundColor = IndianRed,
-            border = null,
-            elevation = 1.dp,
+        HomeNavigationGraph(navController = navController)
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(LightVanilla)
+                .padding(24.dp)
         ) {
-            Column() {
-                Text(
-                    text = "This month",
-                    modifier = Modifier.padding(start = 16.dp, top = 16.dp),
-                    style = MaterialTheme.typography.h1,
-                    color = Color.White
-                )
-                Spacer(modifier = Modifier.height(40.dp))
-                Row(
-                    modifier = Modifier
-                        .padding(start = 0.dp)
-                        .fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceEvenly
-                ) {
-                    CustomCircularProgressBar(140.dp)
-                    Column() {
-                        Text(
-                            text = "Total",
-                            style = MaterialTheme.typography.h1,
-                            color = Color.White,
-                            textAlign = TextAlign.Center
-                        )
-                        Spacer(modifier = Modifier.height(16.dp))
-                        Text(
-                            text = "\$184,30",
-                            style = MaterialTheme.typography.h1,
-                            color = Color.White,
-                            textAlign = TextAlign.Center
-                        )
-                        Spacer(modifier = Modifier.height(50.dp))
-                        Row(
-                            modifier = Modifier.padding(start = 50.dp),
-                            horizontalArrangement = Arrangement.End
-                        ) {
-                            val onClick = { /* Do something */ }
-                            FloatingActionButton(
-                                onClick = onClick,
-                                backgroundColor = Flax,
-                                contentColor = IndianRed
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                shape = RoundedCornerShape(15.dp),
+                backgroundColor = IndianRed,
+                border = null,
+                elevation = 1.dp,
+            ) {
+                Column() {
+                    Text(
+                        text = "This month",
+                        modifier = Modifier.padding(start = 16.dp, top = 16.dp),
+                        style = MaterialTheme.typography.h1,
+                        color = Color.White
+                    )
+                    Spacer(modifier = Modifier.height(40.dp))
+                    Row(
+                        modifier = Modifier
+                            .padding(start = 0.dp)
+                            .fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceEvenly
+                    ) {
+                        CustomCircularProgressBar(140.dp)
+                        Column() {
+                            Text(
+                                text = "Total",
+                                style = MaterialTheme.typography.h1,
+                                color = Color.White,
+                                textAlign = TextAlign.Center
+                            )
+                            Spacer(modifier = Modifier.height(16.dp))
+                            Text(
+                                text = "\$184,30",
+                                style = MaterialTheme.typography.h1,
+                                color = Color.White,
+                                textAlign = TextAlign.Center
+                            )
+                            Spacer(modifier = Modifier.height(50.dp))
+                            Row(
+                                modifier = Modifier.padding(start = 50.dp),
+                                horizontalArrangement = Arrangement.End
                             ) {
-                                Icon(
-                                    Icons.Filled.Add,
-                                    "",
-                                    modifier = Modifier.size(40.dp)
-                                )
+                                val onClick = { /* Do something */ }
+                                FloatingActionButton(
+                                    onClick = onClick,
+                                    backgroundColor = Flax,
+                                    contentColor = IndianRed
+                                ) {
+                                    Icon(
+                                        Icons.Filled.Add,
+                                        "",
+                                        modifier = Modifier.size(40.dp)
+                                    )
+                                }
                             }
                         }
                     }
+                    Spacer(modifier = Modifier.height(24.dp))
                 }
-                Spacer(modifier = Modifier.height(24.dp))
             }
+            Spacer(modifier = Modifier.height(40.dp))
+            Text(
+                text = "Historic",
+                style = MaterialTheme.typography.body2,
+                color = Color.Black,
+                textAlign = TextAlign.Center
+            )
         }
-        Spacer(modifier = Modifier.height(40.dp))
-        Text(
-            text = "Historic",
-            style = MaterialTheme.typography.body2,
-            color = Color.Black,
-            textAlign = TextAlign.Center
-        )
     }
-
 }
 
 @Composable

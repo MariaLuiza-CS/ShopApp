@@ -7,7 +7,8 @@ import androidx.activity.viewModels
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.compose.rememberNavController
-import com.example.shop.SetUpNavGraph
+import com.example.shop.RootNavigationGraph
+import com.example.shop.domain.utils.NavGraph
 import com.example.shop.presentation.ui.viewmodel.WelcomeViewModel
 import com.example.shop.domain.utils.Screen
 import com.example.shop.presentation.ui.theme.ShopTheme
@@ -32,13 +33,15 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             ShopTheme {
+
                 var screen = if (viewModel.state.isCompleted) {
-                    Screen.Home.route
+                    NavGraph.Home.routeGraph
                 } else {
                     Screen.Welcome.route
                 }
+
                 val navController = rememberNavController()
-                SetUpNavGraph(navController = navController, screen)
+                RootNavigationGraph(navController = navController, startDestination = screen)
             }
         }
     }
