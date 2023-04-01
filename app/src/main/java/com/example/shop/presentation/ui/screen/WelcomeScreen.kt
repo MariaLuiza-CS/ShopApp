@@ -21,6 +21,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import com.example.shop.Graph
 import com.example.shop.RootNavigationGraph
 import com.example.shop.domain.utils.OnBoardingPage
 import com.example.shop.domain.utils.Screen
@@ -82,7 +83,7 @@ fun WelcomeScreen(
             pagerState = pagesState
         ) {
             navController.popBackStack()
-            navController.navigate(Screen.Home.route)
+            navController.navigate(Graph.HOME)
             viewModel.setWelcomeCompletedFlow(context)
         }
     }

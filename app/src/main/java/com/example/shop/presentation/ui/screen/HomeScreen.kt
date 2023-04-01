@@ -34,153 +34,155 @@ fun HomeScreen(
     navController: NavHostController = rememberNavController()
 ) {
 
-    var progress by remember { mutableStateOf(0.0f) }
+//    var progress by remember { mutableStateOf(0.0f) }
+//
+//    val animatedProgress = animateFloatAsState(
+//        targetValue = progress,
+//        animationSpec = tween(
+//            durationMillis = 1000
+//        )
+//    )
 
-    val animatedProgress = animateFloatAsState(
-        targetValue = progress,
-        animationSpec = tween(
-            durationMillis = 1000
-        )
-    )
     Scaffold(
         bottomBar = { com.example.shop.presentation.ui.screen.BottomNavigation(navController = navController) }
     ) {
         HomeNavigationGraph(navController = navController)
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(LightVanilla)
-                .padding(24.dp)
-        ) {
-            Card(
-                modifier = Modifier.fillMaxWidth(),
-                shape = RoundedCornerShape(15.dp),
-                backgroundColor = IndianRed,
-                border = null,
-                elevation = 1.dp,
-            ) {
-                Column() {
-                    Text(
-                        text = "This month",
-                        modifier = Modifier.padding(start = 16.dp, top = 16.dp),
-                        style = MaterialTheme.typography.h1,
-                        color = Color.White
-                    )
-                    Spacer(modifier = Modifier.height(40.dp))
-                    Row(
-                        modifier = Modifier
-                            .padding(start = 0.dp)
-                            .fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceEvenly
-                    ) {
-                        CustomCircularProgressBar(140.dp)
-                        Column() {
-                            Text(
-                                text = "Total",
-                                style = MaterialTheme.typography.h1,
-                                color = Color.White,
-                                textAlign = TextAlign.Center
-                            )
-                            Spacer(modifier = Modifier.height(16.dp))
-                            Text(
-                                text = "\$184,30",
-                                style = MaterialTheme.typography.h1,
-                                color = Color.White,
-                                textAlign = TextAlign.Center
-                            )
-                            Spacer(modifier = Modifier.height(50.dp))
-                            Row(
-                                modifier = Modifier.padding(start = 50.dp),
-                                horizontalArrangement = Arrangement.End
-                            ) {
-                                val onClick = { /* Do something */ }
-                                FloatingActionButton(
-                                    onClick = onClick,
-                                    backgroundColor = Flax,
-                                    contentColor = IndianRed
-                                ) {
-                                    Icon(
-                                        Icons.Filled.Add,
-                                        "",
-                                        modifier = Modifier.size(40.dp)
-                                    )
-                                }
-                            }
-                        }
-                    }
-                    Spacer(modifier = Modifier.height(24.dp))
-                }
-            }
-            Spacer(modifier = Modifier.height(40.dp))
-            Text(
-                text = "Historic",
-                style = MaterialTheme.typography.body2,
-                color = Color.Black,
-                textAlign = TextAlign.Center
-            )
-        }
     }
 }
 
-@Composable
-fun CustomCircularProgressBar(size: Dp) {
-    Box(
-        modifier = Modifier.size(size),
-        contentAlignment = Alignment.Center
-    ) {
+//Column(
+//modifier = Modifier
+//.fillMaxSize()
+//.background(LightVanilla)
+//.padding(24.dp)
+//) {
+//    Card(
+//        modifier = Modifier.fillMaxWidth(),
+//        shape = RoundedCornerShape(15.dp),
+//        backgroundColor = IndianRed,
+//        border = null,
+//        elevation = 1.dp,
+//    ) {
+//        Column() {
+//            Text(
+//                text = "This month",
+//                modifier = Modifier.padding(start = 16.dp, top = 16.dp),
+//                style = MaterialTheme.typography.h1,
+//                color = Color.White
+//            )
+//            Spacer(modifier = Modifier.height(40.dp))
+//            Row(
+//                modifier = Modifier
+//                    .padding(start = 0.dp)
+//                    .fillMaxWidth(),
+//                horizontalArrangement = Arrangement.SpaceEvenly
+//            ) {
+//                CustomCircularProgressBar(140.dp)
+//                Column() {
+//                    Text(
+//                        text = "Total",
+//                        style = MaterialTheme.typography.h1,
+//                        color = Color.White,
+//                        textAlign = TextAlign.Center
+//                    )
+//                    Spacer(modifier = Modifier.height(16.dp))
+//                    Text(
+//                        text = "\$184,30",
+//                        style = MaterialTheme.typography.h1,
+//                        color = Color.White,
+//                        textAlign = TextAlign.Center
+//                    )
+//                    Spacer(modifier = Modifier.height(50.dp))
+//                    Row(
+//                        modifier = Modifier.padding(start = 50.dp),
+//                        horizontalArrangement = Arrangement.End
+//                    ) {
+//                        val onClick = { /* Do something */ }
+//                        FloatingActionButton(
+//                            onClick = onClick,
+//                            backgroundColor = Flax,
+//                            contentColor = IndianRed
+//                        ) {
+//                            Icon(
+//                                Icons.Filled.Add,
+//                                "",
+//                                modifier = Modifier.size(40.dp)
+//                            )
+//                        }
+//                    }
+//                }
+//            }
+//            Spacer(modifier = Modifier.height(24.dp))
+//        }
+//    }
+//    Spacer(modifier = Modifier.height(40.dp))
+//    Text(
+//        text = "Historic",
+//        style = MaterialTheme.typography.body2,
+//        color = Color.Black,
+//        textAlign = TextAlign.Center
+//    )
+//}
 
-        val animatedProgress = animateFloatAsState(
-            targetValue = 75f,
-            animationSpec = tween(
-                durationMillis = 1000
-            )
-        )
-
-        Canvas(modifier = Modifier.size(size)) {
-
-            drawCircle(
-                brush = Brush.radialGradient(
-                    colors = listOf(FlaxShadow, FlaxShadow),
-                    center = Offset(x = this.size.width / 2, y = this.size.height / 2),
-                    radius = this.size.height / 2
-                ),
-                radius = this.size.height / 2,
-                center = Offset(x = this.size.width / 2, y = this.size.height / 2)
-            )
-
-            drawCircle(
-                color = IndianRed,
-                radius = (size / 2 - 15.dp).toPx(),
-                center = Offset(x = this.size.width / 2, y = this.size.height / 2)
-            )
-
-            val sweepAngle = (animatedProgress).value * 350 / 100
-
-            drawArc(
-                color = Flax,
-                startAngle = -90f,
-                sweepAngle = sweepAngle,
-                useCenter = false,
-                style = Stroke(width = 15.dp.toPx(), cap = StrokeCap.Round),
-                size = Size(
-                    width = (size - 15.dp).toPx(),
-                    height = (size - 15.dp).toPx()
-                ),
-                topLeft = Offset(
-                    x = (15.dp / 2).toPx(),
-                    y = (15.dp / 2).toPx()
-                )
-            )
-        }
-        Column(
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Text(
-                text = (animatedProgress.value).toInt().toString() + "%",
-                style = MaterialTheme.typography.h1,
-                color = Color.White
-            )
-        }
-    }
-}
+//@Composable
+//fun CustomCircularProgressBar(size: Dp) {
+//    Box(
+//        modifier = Modifier.size(size),
+//        contentAlignment = Alignment.Center
+//    ) {
+//
+//        val animatedProgress = animateFloatAsState(
+//            targetValue = 75f,
+//            animationSpec = tween(
+//                durationMillis = 1000
+//            )
+//        )
+//
+//        Canvas(modifier = Modifier.size(size)) {
+//
+//            drawCircle(
+//                brush = Brush.radialGradient(
+//                    colors = listOf(FlaxShadow, FlaxShadow),
+//                    center = Offset(x = this.size.width / 2, y = this.size.height / 2),
+//                    radius = this.size.height / 2
+//                ),
+//                radius = this.size.height / 2,
+//                center = Offset(x = this.size.width / 2, y = this.size.height / 2)
+//            )
+//
+//            drawCircle(
+//                color = IndianRed,
+//                radius = (size / 2 - 15.dp).toPx(),
+//                center = Offset(x = this.size.width / 2, y = this.size.height / 2)
+//            )
+//
+//            val sweepAngle = (animatedProgress).value * 350 / 100
+//
+//            drawArc(
+//                color = Flax,
+//                startAngle = -90f,
+//                sweepAngle = sweepAngle,
+//                useCenter = false,
+//                style = Stroke(width = 15.dp.toPx(), cap = StrokeCap.Round),
+//                size = Size(
+//                    width = (size - 15.dp).toPx(),
+//                    height = (size - 15.dp).toPx()
+//                ),
+//                topLeft = Offset(
+//                    x = (15.dp / 2).toPx(),
+//                    y = (15.dp / 2).toPx()
+//                )
+//            )
+//        }
+//        Column(
+//            verticalArrangement = Arrangement.Center,
+//            horizontalAlignment = Alignment.CenterHorizontally
+//        ) {
+//            Text(
+//                text = (animatedProgress.value).toInt().toString() + "%",
+//                style = MaterialTheme.typography.h1,
+//                color = Color.White
+//            )
+//        }
+//    }
+//}

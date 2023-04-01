@@ -19,17 +19,21 @@ fun RootNavigationGraph(
 ) {
     NavHost(
         navController = navController,
-        route = NavGraph.Root.routeGraph,
+        route = Graph.ROOT,
         startDestination = startDestination
     ) {
-
-        composable(route =  NavGraph.Home.routeGraph){
+        composable(route =  Graph.HOME){
             HomeScreen()
         }
-
-        composable(route = Screen.Welcome.route) {
+        composable(route = Graph.WELCOME) {
             WelcomeScreen(navController = navController)
         }
-
     }
+}
+
+object Graph {
+    const val ROOT = "root_graph"
+    const val WELCOME = "welcome_graph"
+    const val HOME = "home_graph"
+    const val DETAILS = "details_graph"
 }
