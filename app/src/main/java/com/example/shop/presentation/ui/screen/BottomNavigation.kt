@@ -4,9 +4,7 @@ import androidx.compose.foundation.layout.RowScope
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -29,17 +27,16 @@ fun BottomNavigation(navController: NavHostController) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
 
-        androidx.compose.material.BottomNavigation(
-            backgroundColor = Flax,
-            contentColor = EerieBlack
-        ) {
-
-            items.forEach { item ->
-                AddItem(
-                    screen = item,
-                    currentDestination = currentDestination,
-                    navController = navController
-                )
+    BottomNavigation(
+        backgroundColor = Flax,
+        contentColor = EerieBlack
+    ) {
+        items.forEach { item ->
+            AddItem(
+                screen = item,
+                currentDestination = currentDestination,
+                navController = navController
+            )
 //                BottomNavigationItem(
 //                    icon = { Icon(painterResource(id = item.icon), contentDescription = item.title) },
 //                    label = { Text(text = item.title, fontSize = 9.sp) },
