@@ -10,6 +10,7 @@ import com.example.shop.data.state.WelcomeFlowState
 import com.example.shop.domain.repository.DataStoreRepository
 import com.example.shop.domain.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -36,6 +37,11 @@ class WelcomeViewModel @Inject constructor(
                             error = null
                         )
                     }
+//                    state = state.copy(
+//                        isLoading = false,
+//                        isCompleted = it,
+//                        error = null
+//                    )
                 }
                 is Resource.Error -> {
                     state.copy(

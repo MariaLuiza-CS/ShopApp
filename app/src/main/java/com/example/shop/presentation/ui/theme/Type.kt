@@ -49,5 +49,10 @@ val Typography = Typography(
         fontFamily = Montserrat,
         fontWeight = FontWeight.Bold,
         fontSize = 30.sp
+    ),
+    h3 = TextStyle(
+        fontFamily = Montserrat,
+        fontWeight = FontWeight.Bold,
+        fontSize = 12.sp
     )
 )

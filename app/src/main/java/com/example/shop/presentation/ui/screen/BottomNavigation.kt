@@ -64,7 +64,7 @@ fun RowScope.AddItem(
 ) {
     BottomNavigationItem(
         label = {
-            Text(text = screen.title)
+            Text(text = screen.title, style = MaterialTheme.typography.h3)
         },
         icon = {
             Icon(painterResource(id = screen.icon), contentDescription = screen.title)
@@ -72,6 +72,7 @@ fun RowScope.AddItem(
         selected = currentDestination?.hierarchy?.any {
             it.route == screen.screen_route
         } == true,
+        alwaysShowLabel = false,
         unselectedContentColor = LocalContentColor.current.copy(alpha = ContentAlpha.disabled),
         onClick = {
             navController.navigate(screen.screen_route) {
