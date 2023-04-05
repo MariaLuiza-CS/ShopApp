@@ -5,6 +5,8 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -21,6 +23,7 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.example.shop.domain.model.CardInfo
 import com.example.shop.presentation.ui.theme.Flax
 import com.example.shop.presentation.ui.theme.FlaxShadow
 import com.example.shop.presentation.ui.theme.IndianRed
@@ -28,6 +31,7 @@ import com.example.shop.presentation.ui.theme.LightVanilla
 
 @Composable
 fun ScreenContent() {
+
     var progress by remember { mutableStateOf(0.0f) }
 
     val animatedProgress = animateFloatAsState(
@@ -42,6 +46,21 @@ fun ScreenContent() {
             .background(LightVanilla)
             .padding(24.dp)
     ) {
+        var cardList = listOf<CardInfo>(
+            CardInfo("jan", "0", 0),
+            CardInfo("fev", "0", 0),
+            CardInfo("mar", "0", 0),
+            CardInfo("may", "0", 0),
+            CardInfo("jun", "0", 0),
+            CardInfo("jul", "0", 0),
+            CardInfo("jul", "0", 0),
+            CardInfo("jul", "0", 0),
+            CardInfo("jul", "0", 0),
+            CardInfo("jul", "0", 0),
+            CardInfo("jul", "0", 0),
+            CardInfo("jul", "0", 0)
+        )
+
         Card(
             modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(15.dp),
@@ -108,6 +127,29 @@ fun ScreenContent() {
             color = Color.Black,
             textAlign = TextAlign.Center
         )
+        Spacer(modifier = Modifier.height(40.dp))
+        LazyColumn {
+            items(cardList) { crad ->
+                AllCardsInfo(cardInfo = crad)
+            }
+        }
+    }
+}
+
+@Composable
+fun AllCardsInfo(cardInfo: CardInfo) {
+    Card(
+        modifier = Modifier
+            .padding(10.dp)
+            .fillMaxWidth()
+            .wrapContentHeight(),
+        shape = MaterialTheme.shapes.medium,
+        elevation = 5.dp,
+        backgroundColor = MaterialTheme.colors.surface
+    ) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Text(text = cardInfo.month)
+        }
     }
 }
 

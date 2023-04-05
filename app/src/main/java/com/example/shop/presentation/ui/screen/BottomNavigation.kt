@@ -37,21 +37,6 @@ fun BottomNavigation(navController: NavHostController) {
                 currentDestination = currentDestination,
                 navController = navController
             )
-//                BottomNavigationItem(
-//                    icon = { Icon(painterResource(id = item.icon), contentDescription = item.title) },
-//                    label = { Text(text = item.title, fontSize = 9.sp) },
-//                    selected = currentRoute == item.screen_route,
-//                    selectedContentColor = Color.Black,
-//                    unselectedContentColor = Color.Black.copy(0.4f),
-//                    alwaysShowLabel = false,
-//                    onClick = {
-//                        navController.navigate(item.screen_route) {
-//                            popUpTo(navController.graph.findStartDestination().id)
-//                            launchSingleTop = true
-//                        }
-//                    }
-//                )
-
         }
     }
 }
