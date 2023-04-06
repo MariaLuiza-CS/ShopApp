@@ -46,19 +46,25 @@ fun ScreenContent() {
             .background(LightVanilla)
             .padding(24.dp)
     ) {
+
         var cardList = listOf<CardInfo>(
-            CardInfo("jan", "0", 0),
-            CardInfo("fev", "0", 0),
-            CardInfo("mar", "0", 0),
-            CardInfo("may", "0", 0),
-            CardInfo("jun", "0", 0),
-            CardInfo("jul", "0", 0),
-            CardInfo("jul", "0", 0),
-            CardInfo("jul", "0", 0),
-            CardInfo("jul", "0", 0),
-            CardInfo("jul", "0", 0),
-            CardInfo("jul", "0", 0),
-            CardInfo("jul", "0", 0)
+            CardInfo("jan", "126,54", 0),
+            CardInfo("jan", "126,54", 0),
+            CardInfo("jan", "126,54", 0),
+            CardInfo("jan", "126,54", 0),
+            CardInfo("jan", "126,54", 0),
+            CardInfo("jan", "126,54", 0),
+            CardInfo("jan", "126,54", 0),
+            CardInfo("jan", "126,54", 0),
+            CardInfo("jan", "126,54", 0),
+            CardInfo("jan", "126,54", 0),
+            CardInfo("jan", "126,54", 0),
+            CardInfo("jan", "126,54", 0),
+            CardInfo("jan", "126,54", 0),
+            CardInfo("jan", "126,54", 0),
+            CardInfo("jan", "126,54", 0),
+            CardInfo("jan", "126,54", 0),
+            CardInfo("jan", "126,54", 0),
         )
 
         Card(
@@ -141,14 +147,24 @@ fun AllCardsInfo(cardInfo: CardInfo) {
     Card(
         modifier = Modifier
             .padding(10.dp)
-            .fillMaxWidth()
-            .wrapContentHeight(),
+            .fillMaxWidth(),
         shape = MaterialTheme.shapes.medium,
         elevation = 5.dp,
         backgroundColor = MaterialTheme.colors.surface
     ) {
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            Text(text = cardInfo.month)
+        Row(
+            modifier = Modifier
+                .height(100.dp)
+                .fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Box(modifier = Modifier
+                .wrapContentSize()
+                .padding(15.dp)
+                .background(Color.Black)
+            ) {
+                Text(text = cardInfo.month, color = Color.White)
+            }
         }
     }
 }
