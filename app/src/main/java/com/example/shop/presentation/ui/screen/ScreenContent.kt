@@ -20,14 +20,13 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.example.shop.R
 import com.example.shop.domain.model.CardInfo
-import com.example.shop.presentation.ui.theme.Flax
-import com.example.shop.presentation.ui.theme.FlaxShadow
-import com.example.shop.presentation.ui.theme.IndianRed
-import com.example.shop.presentation.ui.theme.LightVanilla
+import com.example.shop.presentation.ui.theme.*
 
 @Composable
 fun ScreenContent() {
@@ -48,23 +47,19 @@ fun ScreenContent() {
     ) {
 
         var cardList = listOf<CardInfo>(
-            CardInfo("jan", "126,54", 0),
-            CardInfo("jan", "126,54", 0),
-            CardInfo("jan", "126,54", 0),
-            CardInfo("jan", "126,54", 0),
-            CardInfo("jan", "126,54", 0),
-            CardInfo("jan", "126,54", 0),
-            CardInfo("jan", "126,54", 0),
-            CardInfo("jan", "126,54", 0),
-            CardInfo("jan", "126,54", 0),
-            CardInfo("jan", "126,54", 0),
-            CardInfo("jan", "126,54", 0),
-            CardInfo("jan", "126,54", 0),
-            CardInfo("jan", "126,54", 0),
-            CardInfo("jan", "126,54", 0),
-            CardInfo("jan", "126,54", 0),
-            CardInfo("jan", "126,54", 0),
-            CardInfo("jan", "126,54", 0),
+            CardInfo("jan", "126,54"),
+            CardInfo("jan", "126,54"),
+            CardInfo("jan", "126,54"),
+            CardInfo("jan", "126,54"),
+            CardInfo("jan", "126,54"),
+            CardInfo("jan", "126,54"),
+            CardInfo("jan", "126,54"),
+            CardInfo("jan", "126,54"),
+            CardInfo("jan", "126,54"),
+            CardInfo("jan", "126,54"),
+            CardInfo("jan", "126,54"),
+            CardInfo("jan", "126,54"),
+            CardInfo("jan", "126,54")
         )
 
         Card(
@@ -72,7 +67,7 @@ fun ScreenContent() {
             shape = RoundedCornerShape(15.dp),
             backgroundColor = IndianRed,
             border = null,
-            elevation = 1.dp,
+            elevation = 1.dp
         ) {
             Column() {
                 Text(
@@ -146,11 +141,11 @@ fun ScreenContent() {
 fun AllCardsInfo(cardInfo: CardInfo) {
     Card(
         modifier = Modifier
-            .padding(10.dp)
-            .fillMaxWidth(),
-        shape = MaterialTheme.shapes.medium,
-        elevation = 5.dp,
-        backgroundColor = MaterialTheme.colors.surface
+            .fillMaxWidth()
+            .padding(bottom = 16.dp),
+        elevation = 1.dp,
+        shape = RoundedCornerShape(15.dp),
+        backgroundColor = AtomicTangerine
     ) {
         Row(
             modifier = Modifier
@@ -158,12 +153,41 @@ fun AllCardsInfo(cardInfo: CardInfo) {
                 .fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Box(modifier = Modifier
-                .wrapContentSize()
-                .padding(15.dp)
-                .background(Color.Black)
+            Card(
+                modifier = Modifier
+                    .wrapContentWidth()
+                    .padding(16.dp),
+                shape = RoundedCornerShape(15.dp),
+                backgroundColor = Flax,
+                border = null,
+                elevation = 1.dp
             ) {
-                Text(text = cardInfo.month, color = Color.White)
+                Column(
+                    verticalArrangement = Arrangement.Center
+                ) {
+                    Text(
+                        modifier = Modifier.padding(20.dp),
+                        text = cardInfo.month.uppercase(),
+                        color = EerieBlack,
+                        style = MaterialTheme.typography.h4
+                    )
+                }
+            }
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceAround
+            ) {
+                Text(
+                    text = "$" + cardInfo.value,
+                    color = EerieBlack,
+                    style = MaterialTheme.typography.h4
+                )
+                Icon(
+                    modifier = Modifier.size(34.dp),
+                    painter = painterResource(id = R.drawable.ic_baseline_more_vert_24),
+                    contentDescription = "test icon"
+                )
             }
         }
     }
