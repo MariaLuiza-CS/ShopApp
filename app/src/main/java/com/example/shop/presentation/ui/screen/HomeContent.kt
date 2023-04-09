@@ -29,7 +29,7 @@ import com.example.shop.domain.model.CardInfo
 import com.example.shop.presentation.ui.theme.*
 
 @Composable
-fun ScreenContent() {
+fun HomeContent() {
 
     var progress by remember { mutableStateOf(0.0f) }
 
@@ -128,7 +128,7 @@ fun ScreenContent() {
             color = Color.Black,
             textAlign = TextAlign.Center
         )
-        Spacer(modifier = Modifier.height(40.dp))
+        Spacer(modifier = Modifier.height(20.dp))
         LazyColumn {
             items(cardList) { crad ->
                 AllCardsInfo(cardInfo = crad)
