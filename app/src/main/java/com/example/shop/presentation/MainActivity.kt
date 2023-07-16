@@ -38,8 +38,8 @@ class MainActivity : ComponentActivity() {
                 } else {
                     Graph.WELCOME
                 }
-
-                RootNavigationGraph(navController =  rememberNavController(), startDestination = screen)
+                val navController =  rememberNavController()
+                RootNavigationGraph(navController =  navController, startDestination = screen)
             }
         }
     }

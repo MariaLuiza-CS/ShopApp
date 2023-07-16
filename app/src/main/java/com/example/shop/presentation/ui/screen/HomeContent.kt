@@ -1,9 +1,12 @@
+@file:OptIn(ExperimentalMaterialApi::class)
+
 package com.example.shop.presentation.ui.screen
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -24,44 +27,26 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import com.example.shop.BarGraph
+import com.example.shop.BarType
 import com.example.shop.R
 import com.example.shop.domain.model.CardInfo
 import com.example.shop.presentation.ui.theme.*
 
 @Composable
-fun HomeContent() {
-
-    var progress by remember { mutableStateOf(0.0f) }
-
-    val animatedProgress = animateFloatAsState(
-        targetValue = progress,
-        animationSpec = tween(
-            durationMillis = 1000
-        )
-    )
+fun HomeContent(navController: NavHostController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
             .background(LightVanilla)
             .padding(24.dp)
     ) {
-
-        var cardList = listOf<CardInfo>(
-            CardInfo("jan", "126,54"),
-            CardInfo("jan", "126,54"),
-            CardInfo("jan", "126,54"),
-            CardInfo("jan", "126,54"),
-            CardInfo("jan", "126,54"),
-            CardInfo("jan", "126,54"),
-            CardInfo("jan", "126,54"),
-            CardInfo("jan", "126,54"),
-            CardInfo("jan", "126,54"),
-            CardInfo("jan", "126,54"),
+        val cardList = listOf(
             CardInfo("jan", "126,54"),
             CardInfo("jan", "126,54"),
             CardInfo("jan", "126,54")
         )
-
         Card(
             modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(15.dp),
@@ -69,7 +54,7 @@ fun HomeContent() {
             border = null,
             elevation = 1.dp
         ) {
-            Column() {
+            Column {
                 Text(
                     text = "This month",
                     modifier = Modifier.padding(start = 16.dp, top = 16.dp),
@@ -131,21 +116,25 @@ fun HomeContent() {
         Spacer(modifier = Modifier.height(20.dp))
         LazyColumn {
             items(cardList) { crad ->
-                AllCardsInfo(cardInfo = crad)
+                AllCardsInfo(cardInfo = crad, navController)
             }
         }
     }
 }
 
 @Composable
-fun AllCardsInfo(cardInfo: CardInfo) {
+fun AllCardsInfo(cardInfo: CardInfo,navController: NavHostController) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .padding(bottom = 16.dp),
         elevation = 1.dp,
         shape = RoundedCornerShape(15.dp),
-        backgroundColor = AtomicTangerine
+        backgroundColor = AtomicTangerine,
+        onClick = {
+            navController.popBackStack()
+            navController.navigate("ITEM")
+        }
     ) {
         Row(
             modifier = Modifier
@@ -199,16 +188,13 @@ fun CustomCircularProgressBar(size: Dp) {
         modifier = Modifier.size(size),
         contentAlignment = Alignment.Center
     ) {
-
         val animatedProgress = animateFloatAsState(
             targetValue = 75f,
             animationSpec = tween(
                 durationMillis = 1000
             )
         )
-
         Canvas(modifier = Modifier.size(size)) {
-
             drawCircle(
                 brush = Brush.radialGradient(
                     colors = listOf(FlaxShadow, FlaxShadow),
