@@ -1,7 +1,6 @@
 package com.example.shop.domain.repository
 
 import com.example.shop.domain.model.Item
-import com.example.shop.domain.utils.Response
 import kotlinx.coroutines.flow.Flow
 
 interface ItemRepository {

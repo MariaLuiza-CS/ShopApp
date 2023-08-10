@@ -1,13 +1,8 @@
 package com.example.shop.domain.utils
 
-sealed class Response<out T> {
-    object Loading : Response<Nothing>()
+import com.example.shop.domain.model.Item
 
-    data class Success<out T>(
-        val data: T?
-    ) : Response<T>()
-
-    data class Failure(
-        val e: Exception?
-    ) : Response<Nothing>()
-}
+data class ItemUiState(
+    val item : Item = Item(),
+    val isEntryValid: Boolean = false
+)
